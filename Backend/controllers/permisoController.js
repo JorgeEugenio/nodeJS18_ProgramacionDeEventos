@@ -35,7 +35,7 @@ async function getPermisos(req, res){
 
 async function updatePermiso(req, res){
     try {
-        await Permiso.findByIdAndUpdate(req.body)
+        await Permiso.findOneAndUpdate(req.params.id, req.body)
         res.status(200).send({ status: 'Permiso actualizado'})
     } catch (e) {
         res.status(500).send({message: e.message})
@@ -50,9 +50,21 @@ async function deletePermiso(req, res){
     }
 }
 
+async function getPermiso(req, res){
+    try {
+        const permiso = await Permiso.aggregate()
+                                        .match({'_id': mongoose.Types.ObjectId(req.params.id)})
+                                        
+        res.status(200).send(permiso[0])
+    } catch (e) {
+        res.status(500).send({message: e.message})
+    }
+}
+
 module.exports = {
-    addPermiso,
     getPermisos,
+    addPermiso,
+    getPermiso,
     updatePermiso,
     deletePermiso
 }

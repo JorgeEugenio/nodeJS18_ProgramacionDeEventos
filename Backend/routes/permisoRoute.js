@@ -1,15 +1,16 @@
 const express = require('express')
 const {
-    addPermiso,
     getPermisos,
+    addPermiso,
+    getPermiso,
     updatePermiso,
     deletePermiso
 } = require('../controllers/permisoController')
 
 const api = express.Router()
-
-    api.post('/permiso/', addPermiso)
     api.get('/permiso', getPermisos)
+    api.post('/permiso/', addPermiso)
+    api.get('/permiso/:id', getPermiso)
     api.put('/permiso/:id', updatePermiso)
     api.delete('/permiso/:id',deletePermiso)
     

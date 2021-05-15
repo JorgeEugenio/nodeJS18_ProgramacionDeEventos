@@ -67,10 +67,22 @@ async function getEventodetalle(req, res){
     }
 }
 
+async function filtrar_Eventodetalle_IdEvento(req, res){
+    try {
+        const eventodetalle = await Eventodetalle.aggregate()
+                                        .match({'idEvento': mongoose.Types.ObjectId(req.params.id)})
+                                        
+
+        res.status(200).send(eventodetalle)
+    } catch (e) {
+        res.status(500).send({message: e.message})
+    }
+}
 module.exports = {
     addEventodetalle,
     getEventodetalles,
     updateEventodetalle,
     deleteEventodetalle,
-    getEventodetalle
+    getEventodetalle,
+    filtrar_Eventodetalle_IdEvento
 }

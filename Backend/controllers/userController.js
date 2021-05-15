@@ -7,7 +7,9 @@ async function addUser(req,res){
             nombres,
             apellidos,
             email,
-            password
+            password,
+            imgUrl,
+            idPermiso
 
         } = req.body
 
@@ -15,7 +17,9 @@ async function addUser(req,res){
             nombres,
             apellidos,
             email,
-            password
+            password,
+            imgUrl,
+            idPermiso
         })
 
         if (req.file) {
@@ -100,7 +104,7 @@ async function getUserEmailPassword(req,res){
 
 async function updateUser(req,res){
     try {
-        await usuario.findByIdAndUpdate(req.params.id)
+        await User.findOneAndUpdate(req.params.id, req.body)
         res.json({status: 'Usuario Actualizado'})
     } catch (e) {
         res.status(500).json({ message: e.message})

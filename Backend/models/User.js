@@ -9,6 +9,7 @@ const userSchema = Schema({
     email: String,
     password: String,
     imgUrl: String,
+    idPermiso: mongoose.ObjectId
 },
 {
     timestamps: true
