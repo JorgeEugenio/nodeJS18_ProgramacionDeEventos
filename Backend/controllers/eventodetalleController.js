@@ -71,6 +71,12 @@ async function filtrar_Eventodetalle_IdEvento(req, res){
     try {
         const eventodetalle = await Eventodetalle.aggregate()
                                         .match({'idEvento': mongoose.Types.ObjectId(req.params.id)})
+                                        .lookup({
+                                            from: "eventos",
+                                            localField:"idEvento",
+                                            foreignField: "_id",
+                                            as: "detalles"
+                                        })
                                         
 
         res.status(200).send(eventodetalle)

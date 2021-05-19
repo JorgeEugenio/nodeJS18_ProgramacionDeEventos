@@ -10,6 +10,7 @@ export default class Project{
     }
 
     update(participanteId, participante){
+        console.log(urlBase + '/'+participanteId);
         return axios.put( urlBase + '/'+participanteId, participante)
     }
 

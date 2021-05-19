@@ -29,7 +29,7 @@
 
 					<Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
 					<!-- <Column field="_id" header="_id" :sortable="true"></Column> -->
-					<Column field="idEvento" header="Fecha de evento" :sortable="true"></Column>
+					<Column field="idEvento" header="Fecha de evento" :sortable="true" :visible="false"></Column>
 					<Column field="idProveedor" header="Proveedor" :sortable="true"></Column>
                     <Column field="idProducto" header="Producto" :sortable="true"></Column>
                     <Column field="costoProductounitario" header="c/u" :sortable="true"></Column>

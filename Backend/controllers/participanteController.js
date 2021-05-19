@@ -75,6 +75,12 @@ async function filtrar_participante_IdEvento(req, res){
     try {
         const participante = await Participante.aggregate()
                                         .match({'idEventoparticipante': mongoose.Types.ObjectId(req.params.id)})
+                                        .project({
+                                            "_id":1,
+                                            "nombresparticipante":1,
+                                            "detallesparticipante":1,
+                                            "costoinscripcionparticipante":1
+                                        })
                                         
 
         res.status(200).send(participante)
